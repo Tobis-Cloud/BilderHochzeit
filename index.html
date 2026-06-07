@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere Hochzeit – Luise & Tobi</title>
+    
+    <!-- Google Fonts: Cormorant Garamond für Überschriften, Montserrat für modernen Lesefluss -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           DESIGN SYSTEM & VARIABLE DEFINITION
+           ========================================================================== */
+        :root {
+            /* Farbpalette: Salbei, Cremeweiß und feines Roségold/Gold */
+            --bg-color: #FAF8F5;            /* Zartes Creme/Off-White */
+            --card-bg: #FFFFFF;             /* Reines Weiß für Karten */
+            --primary: #768E80;             /* Elegantes Salbeigrün */
+            --primary-hover: #5F7467;       /* Dunkleres Salbei */
+            --primary-light: #F0F4F2;       /* Sehr helles Salbeigrün */
+            --rosegold: #C9A297;            /* Mattes Roségold */
+            --rosegold-hover: #B79085;      /* Dunkleres Roségold */
+            --gold: #D4AF37;                /* Klassisches Gold */
+            --text-dark: #353D38;           /* Dunkles Anthrazit mit Salbeistich */
+            --text-muted: #808D85;          /* Gedämpftes Grau-Salbei */
+            --text-light: #FFFFFF;          /* Reines Weiß für Texte auf dunklem Grund */
+            --border-color: #EBE5DC;        /* Zarte Beige-Trennung */
+            
+            /* UI-Effekte & Schatten */
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 4px 10px rgba(118, 142, 128, 0.05);
+            --shadow-md: 0 10px 30px rgba(118, 142, 128, 0.08);
+            --shadow-lg: 0 20px 45px rgba(118, 142, 128, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ==========================================================================
+           BASE STYLES
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Hintergrund-Dekoration */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 350px;
+            background: radial-gradient(circle at top right, rgba(199, 162, 151, 0.08), transparent 60%),
+                        radial-gradient(circle at top left, rgba(118, 142, 128, 0.08), transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ==========================================================================
+           TYPOGRAPHY
+           ========================================================================== */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 2.8rem);
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 6vw, 2.2rem);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==========================================================================
+           HEADER / HERO SECTION
+           ========================================================================== */
+        header {
+            text-align: center;
+            padding: clamp(1.5rem, 6vw, 3rem) 1rem 1.2rem 1rem;
+            position: relative;
+        }
+
+        .monogramm {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--rosegold);
+            border: 1px solid var(--border-color);
+            width: 55px;
+            height: 55px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--rosegold);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.2rem auto;
+            width: 150px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .divider-flower {
+            color: var(--rosegold);
+            padding: 0 10px;
+            font-size: 0.8rem;
+        }
+
+        .subtitle {
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto;
+            font-weight: 300;
+            padding: 0 0.5rem;
+        }
+
+        /* ==========================================================================
+           TAB NAVIGATION
+           ========================================================================== */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin: 0.8rem auto 1.5rem auto;
+            max-width: 500px;
+            width: calc(100% - 1.5rem);
+            padding: 4px;
+            background-color: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 11px 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.75rem, 3vw, 0.85rem);
+            font-weight: 500;
+            border-radius: 30px;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .tab-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: var(--text-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn:focus-visible {
+            outline: 2px solid var(--rosegold);
+            outline-offset: -2px;
+        }
+
+        /* ==========================================================================
+           MAIN CONTENT AREA
+           ========================================================================== */
+        main {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 0.85rem 3rem 0.85rem;
+            position: relative;
+        }
+
+        @media (min-width: 480px) {
+            main {
+                padding: 0 1.5rem 4rem 1.5rem;
+            }
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================================================
+           SECTION 1: NATIVE CAMERA CAPTURE
+           ========================================================================== */
+        .capture-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 4vw, 1.5rem);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rosegold), var(--primary));
+        }
+
+        .camera-illustration {
+            width: 90px;
+            height: 90px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            position: relative;
+        }
+
+        .camera-illustration::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 1px dashed var(--rosegold);
+            border-radius: 50%;
+            animation: rotateDashed 20s linear infinite;
+        }
+
+        @keyframes rotateDashed {
+            100% { transform: rotate(360deg); }
+        }
+
+        .camera-illustration svg {
+            width: 40px;
+            height: 40px;
+            fill: currentColor;
+        }
+
+        .capture-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .capture-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 320px;
+            margin: 0 auto 2rem auto;
+            font-weight: 300;
+        }
+
+        /* Elegant gold-rose button */
+        .btn-capture {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--rosegold) 0%, var(--rosegold-hover) 100%);
+            color: var(--text-light);
+            border: none;
+            padding: clamp(15px, 4vw, 18px) clamp(24px, 6vw, 36px);
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(201, 162, 151, 0.4);
+            transition: var(--transition);
+            width: 100%;
+            max-width: 340px;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .btn-capture:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 162, 151, 0.5);
+            background: linear-gradient(135deg, var(--rosegold-hover) 0%, #a57d72 100%);
+        }
+
+        .btn-capture:active {
+            transform: translateY(1px);
+        }
+
+        .btn-capture svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Preview Container */
+        .preview-container {
+            display: none;
+            margin-top: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-color);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .preview-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .preview-wrapper {
+            width: 100%;
+            max-height: 400px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background-color: #000;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .preview-wrapper img, .preview-wrapper video {
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .btn-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Sage Green Upload Button */
+        .btn-upload {
+            background-color: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(118, 142, 128, 0.3);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+        }
+
+        .btn-upload:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 8px 20px rgba(118, 142, 128, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-upload svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .btn-secondary {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            max-width: 300px;
+            touch-action: manipulation;
+        }
+
+        /* Galerie-Upload Button (zweite Option) */
+        .btn-gallery-upload {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: none;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            padding: clamp(13px, 3.5vw, 16px) clamp(20px, 5vw, 30px);
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.88rem, 3vw, 0.95rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            max-width: 340px;
+            outline: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            margin-top: 12px;
+        }
+
+        .btn-gallery-upload:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary-hover);
+            color: var(--primary-hover);
+        }
+
+        .btn-gallery-upload svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Uploader-Name Badge auf Galerie-Items */
+        .uploader-tag {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30,35,30,0.75) 0%, transparent 100%);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 16px 8px 6px 8px;
+            letter-spacing: 0.03em;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            z-index: 3;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            border-color: var(--text-muted);
+        }
+
+        /* Success Animation Alert */
+        .success-alert {
+            display: none;
+            background-color: var(--primary-light);
+            border: 1px solid var(--primary);
+            color: var(--primary-hover);
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            margin: 1.5rem auto 0 auto;
+            max-width: 400px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* ==========================================================================
+           SECTION 2: GALLERY GRID
+           ========================================================================== */
+        .gallery-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .gallery-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        @media (min-width: 400px) {
+            .gallery-grid {
+                gap: 10px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            background-color: #EFEFEF;
+            border: 2px solid var(--card-bg);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-md);
+            border-color: var(--rosegold);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        /* Play Icon Overlay for Videos in Gallery */
+        .gallery-item-video::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23768E80'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 55% center;
+            background-size: 18px;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .gallery-item-video:hover::after {
+            background-color: #FFFFFF;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Custom Local upload tag */
+        .local-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 3px 8px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+        }
+
+        /* Löschen-Button auf Galerie-Items */
+        .gallery-delete-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(22, 27, 24, 0.65);
+            color: #fff;
+            font-size: 0.85rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s, background 0.2s, transform 0.15s;
+            z-index: 5;
+            backdrop-filter: blur(4px);
+        }
+
+        .gallery-item:hover .gallery-delete-btn,
+        .gallery-item:focus-within .gallery-delete-btn {
+            opacity: 1;
+        }
+
+        .gallery-delete-btn:hover {
+            background: rgba(180, 60, 50, 0.85);
+            transform: scale(1.1);
+        }
+
+        /* Leere-Galerie-Anzeige */
+        .gallery-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           LIGHTBOX / MODAL VIEW
+           ========================================================================== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(22, 27, 24, 0.96); /* Dunkles Salbei-Schwarz */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--border-color);
+            cursor: pointer;
+            padding: 10px;
+            transition: var(--transition);
+            z-index: 1010;
+        }
+
+        .lightbox-close:hover {
+            color: var(--text-light);
+            transform: scale(1.1);
+        }
+
+        .lightbox-close svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        .lightbox-content-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-media {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            object-fit: contain;
+            animation: zoomIn 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Navigation Arrows */
+        .lightbox-nav {
+            position: absolute;
+            background: none;
+            border: none;
+            color: var(--border-color);
+            cursor: pointer;
+            padding: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: var(--transition);
+            z-index: 1005;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .lightbox-nav:hover {
+            color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .lightbox-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .lightbox-nav {
+                padding: 10px;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            background-color: var(--card-bg);
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        .footer-heart {
+            color: var(--rosegold);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           NAME QUERY OVERLAY / MODAL (Milestone 2)
+           ========================================================================== */
+        .name-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(22, 27, 24, 0.88); /* Dunkles Salbei-Schwarz */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 2000; /* Höher als die Lightbox, um Interaktionen zu sperren */
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .name-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .name-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            max-width: 420px;
+            width: calc(100% - 2rem);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            transform: scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            margin: auto;
+        }
+
+        .name-overlay.active .name-card {
+            transform: scale(1);
+        }
+
+        .name-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rosegold), var(--primary));
+        }
+
+        .name-title {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .name-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .name-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            text-align: left;
+            gap: 0.4rem;
+        }
+
+        .input-label {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: var(--bg-color);
+            transition: border-color var(--transition), box-shadow var(--transition);
+            outline: none;
+        }
+
+        .name-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(118, 142, 128, 0.15);
+        }
+
+        .name-input.invalid {
+            border-color: #d9534f;
+            box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.15);
+        }
+
+        .error-message {
+            display: none;
+            color: #d9534f;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        .name-form-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-submit-name {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--rosegold) 0%, var(--rosegold-hover) 100%);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(201, 162, 151, 0.3);
+            transition: var(--transition);
+            width: 100%;
+            outline: none;
+        }
+
+        .btn-submit-name:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 162, 151, 0.4);
+            background: linear-gradient(135deg, var(--rosegold-hover) 0%, #a57d72 100%);
+        }
+
+        .btn-submit-name:active {
+            transform: translateY(1px);
+        }
+
+        .btn-submit-name:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .btn-cancel-edit-name {
+            width: 100%;
+            border-radius: 40px;
+            padding: 15px 30px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-dark);
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .btn-cancel-edit-name:hover {
+            background-color: #eee9e0;
+            color: var(--text-dark);
+            border-color: var(--text-muted);
+        }
+
+        /* Gästeprofil-Badge im Header */
+        .guest-profile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--primary-light);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin: 1.2rem auto 0 auto;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+            font-weight: 400;
+        }
+
+        .guest-profile strong {
+            color: var(--primary-hover);
+            font-weight: 600;
+        }
+
+        .btn-edit-name {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 4px;
+            display: inline-flex;
+            align-items: center;
+            color: var(--rosegold);
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        .btn-edit-name:hover {
+            color: var(--rosegold-hover);
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Optimierungen für Mobilgeräte (Smartphones) */
+        @media (max-width: 480px) {
+            .name-overlay {
+                align-items: flex-end; /* Am unteren Rand ausrichten für leichtere Daumenbedienung */
+                padding: 10px;
+            }
+
+            .name-card {
+                padding: 2rem 1.25rem;
+                width: 100%;
+                border-radius: var(--radius-lg);
+            }
+
+            .name-title {
+                font-size: 1.5rem;
+            }
+
+            .name-text {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .name-input {
+                padding: 12px 14px;
+                font-size: 0.95rem;
+            }
+
+            .btn-submit-name, .btn-cancel-edit-name {
+                padding: 13px 25px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         HERO HEADER
+         ========================================================================== -->
+    <header>
+        <div class="monogramm">L&T</div>
+        <div class="date">12. September 2026</div>
+        <h1>Luise & Tobi</h1>
+        <div class="divider">
+            <span class="divider-flower">✦</span>
+        </div>
+        <p class="subtitle">Schön, dass ihr dabei seid! Haltet eure schönsten Momente fest und teilt sie direkt mit uns. 📷</p>
+        
+        <!-- Guest Profile Section -->
+        <div class="guest-profile" id="guest-profile" style="display: none;">
+            <span>Hallo <strong id="guest-name-display"></strong></span>
+            <button type="button" id="btn-edit-name" class="btn-edit-name" aria-label="Name bearbeiten">✏️</button>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         TAB CONTROLS
+         ========================================================================== -->
+    <div class="tab-navigation" role="tablist">
+        <button id="tab-btn-capture" class="tab-btn active" role="tab" aria-selected="true" aria-controls="capture-panel">
+            <!-- Camera SVG Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+            </svg>
+            Aufnehmen
+        </button>
+        <button id="tab-btn-gallery" class="tab-btn" role="tab" aria-selected="false" aria-controls="gallery-panel">
+            <!-- Grid Gallery SVG Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M4 11h5V5H4v6zm0 7h5v-6H4v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"/>
+            </svg>
+            Gästegalerie
+        </button>
+    </div>
+
+    <!-- ==========================================================================
+         MAIN LAYOUT / TAB SESSIONS
+         ========================================================================== -->
+    <main>
+        
+        <!-- Tab 1: Kamera-Aufnahme -->
+        <section id="capture-panel" class="tab-content active" role="tabpanel" aria-labelledby="tab-btn-capture">
+            <div class="capture-card">
+                <div class="camera-illustration">
+                    <!-- Photo Camera SVG Icon -->
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3.2"/>
+                        <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                    </svg>
+                </div>
+                <h2 class="capture-title">Lass einen Gruß da</h2>
+                <p class="capture-text">Nimm ein Foto oder Video auf. Es wird sofort in der Gästegalerie aufgeführt.</p>
+                
+                <!-- Sichtbarer Auslöser: Kamera -->
+                <button type="button" class="btn-capture" id="btn-trigger-camera" aria-label="Foto oder Video aufnehmen">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3.2"/>
+                        <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                    </svg>
+                    Foto/Video aufnehmen
+                </button>
+
+                <!-- Galerie-Upload Button -->
+                <button type="button" class="btn-gallery-upload" id="btn-trigger-gallery" aria-label="Aus Galerie wählen">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                    Aus Galerie hochladen
+                </button>
+
+                <!-- Kamera-Input (capture="environment" = Rückkamera) -->
+                <input type="file" id="camera-input" accept="image/*,video/*" capture="environment" style="display: none;">
+                <!-- Galerie-Input (kein capture = Dateiauswahl aus Galerie, Mehrfachauswahl möglich) -->
+                <input type="file" id="gallery-input" accept="image/*,video/*" multiple style="display: none;">
+                
+                <!-- Vorschau- und Uploadbereich nach dem Aufnehmen -->
+                <div class="preview-container" id="preview-container">
+                    <h3 class="preview-title">Dein Moment</h3>
+                    <div class="preview-wrapper" id="preview-wrapper">
+                        <!-- Wird dynamisch mit img oder video gefüllt -->
+                    </div>
+                    <div class="btn-actions">
+                        <button type="button" class="btn-upload" id="btn-submit-upload">
+                            <!-- Cloud Upload SVG Icon -->
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                            </svg>
+                            Foto hochladen
+                        </button>
+                        <button type="button" class="btn-secondary" id="btn-cancel-capture">Anderes Bild wählen</button>
+                    </div>
+                    
+                    <!-- Simuliertes Feedback -->
+                    <div class="success-alert" id="success-alert" role="alert">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        Erfolgreich hochgeladen! (Lokal zur Galerie hinzugefügt)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 2: Galerie für Gäste -->
+        <section id="gallery-panel" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-gallery">
+            <div class="gallery-header">
+                <h2>Die Gästegalerie</h2>
+                <p>Klicke auf die Bilder, um sie zu vergrößern.</p>
+            </div>
+            
+            <!-- Leere Galerie Hinweis -->
+                <div class="gallery-empty" id="gallery-empty">
+                    <svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:var(--rosegold);opacity:0.5;margin-bottom:1rem;"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                    <p style="color:var(--text-muted);font-size:1rem;font-weight:400;">Noch keine Fotos hochgeladen.</p>
+                    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.3rem;">Sei der Erste, der einen Moment teilt! 📸</p>
+                </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Fotos werden hier dynamisch aus dem Gerätespeicher geladen -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         LIGHTBOX (MODAL) VIEW
+         ========================================================================== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildvergrößerung">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Schließen">
+            <!-- Close SVG Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+        
+        <!-- Navigation Buttons -->
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Vorheriges Bild">
+            <!-- Left Chevron SVG Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+        </button>
+        
+        <div class="lightbox-content-wrapper">
+            <!-- Dynamischer Inhalt (img oder video) wird hier injiziert -->
+            <div id="lightbox-media-container"></div>
+        </div>
+        
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Nächstes Bild">
+            <!-- Right Chevron SVG Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- ==========================================================================
+         GUEST NAME MODAL OVERLAY (Milestone 2)
+         ========================================================================== -->
+    <div class="name-overlay" id="name-overlay-modal" role="dialog" aria-modal="true" aria-labelledby="name-title-id">
+        <div class="name-card">
+            <h2 class="name-title" id="name-title-id">Herzlich willkommen!</h2>
+            <p class="name-text">Schön, dass du da bist. Bitte gib deinen Namen ein, um fortzufahren und Fotos zu teilen.</p>
+            <form class="name-form" id="name-form" novalidate>
+                <div class="input-group">
+                    <label for="guest-name-input" class="input-label">Dein Name</label>
+                    <input type="text" id="guest-name-input" class="name-input" placeholder="z. B. Max Mustermann" required autocomplete="name">
+                    <span class="error-message" id="guest-name-error" role="alert">Bitte trage einen Namen ein.</span>
+                </div>
+                <div class="name-form-buttons" style="display: flex; gap: 10px; flex-direction: column; width: 100%;">
+                    <button type="submit" class="btn-submit-name" id="btn-submit-name">
+                        Loslegen
+                    </button>
+                    <button type="button" class="btn-cancel-edit-name" id="btn-cancel-edit-name" style="display: none;">
+                        Abbrechen
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer>
+        <p>Luise & Tobi • 12. September 2026</p>
+        <p>Danke, dass ihr diesen besonderen Tag mit uns geteilt habt <span class="footer-heart">♥</span></p>
+    </footer>
+
+    <!-- ==========================================================================
+         JAVASCRIPT CONTROLLERS
+         ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- DOM Elements ---
+            const tabBtnCapture = document.getElementById('tab-btn-capture');
+            const tabBtnGallery = document.getElementById('tab-btn-gallery');
+            const panelCapture = document.getElementById('capture-panel');
+            const panelGallery = document.getElementById('gallery-panel');
+            
+            const btnTriggerCamera = document.getElementById('btn-trigger-camera');
+            const btnTriggerGallery = document.getElementById('btn-trigger-gallery');
+            const cameraInput = document.getElementById('camera-input');
+            const galleryInput = document.getElementById('gallery-input');
+            const previewContainer = document.getElementById('preview-container');
+            const previewWrapper = document.getElementById('preview-wrapper');
+            const btnSubmitUpload = document.getElementById('btn-submit-upload');
+            const btnCancelCapture = document.getElementById('btn-cancel-capture');
+            const successAlert = document.getElementById('success-alert');
+            const galleryGrid = document.getElementById('gallery-grid');
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxMediaContainer = document.getElementById('lightbox-media-container');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+
+            // Name Overlay Elements
+            const nameOverlayModal = document.getElementById('name-overlay-modal');
+            const nameForm = document.getElementById('name-form');
+            const guestNameInput = document.getElementById('guest-name-input');
+            const guestNameError = document.getElementById('guest-name-error');
+            const btnSubmitName = document.getElementById('btn-submit-name');
+            const btnCancelEditName = document.getElementById('btn-cancel-edit-name');
+
+            // Guest Profile Display
+            const guestProfile = document.getElementById('guest-profile');
+            const guestNameDisplay = document.getElementById('guest-name-display');
+            const btnEditName = document.getElementById('btn-edit-name');
+            
+            let tempFile = null;          // Speichert die aufgenommene Datei temporär
+            let activeLightboxIndex = 0;   // Index für die Galerie-Navigation in der Lightbox
+            let currentGalleryItems = [];  // Array der aktuellen Galerie-DOM-Elemente
+            const galleryEmpty = document.getElementById('gallery-empty');
+
+            // ==========================================================================
+            // INDEXEDDB – Persistente Foto-Speicherung im Browser
+            // ==========================================================================
+            const DB_NAME = 'HochzeitGalerie';
+            const DB_VERSION = 2;   // erhöht für neues status-Feld
+            const STORE_NAME = 'fotos';
+            let db = null;
+
+            function openDB() {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(DB_NAME, DB_VERSION);
+                    request.onupgradeneeded = (e) => {
+                        const database = e.target.result;
+                        if (!database.objectStoreNames.contains(STORE_NAME)) {
+                            const store = database.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                            store.createIndex('timestamp', 'timestamp', { unique: false });
+                        }
+                    };
+                    request.onsuccess = (e) => resolve(e.target.result);
+                    request.onerror = (e) => reject(e.target.error);
+                });
+            }
+
+            function savePhotoToDB(dataURL, fileType, guestName, fileName) {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction([STORE_NAME], 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const record = {
+                        dataURL,
+                        fileType,
+                        guestName: guestName || 'Gast',
+                        fileName: fileName || 'foto.jpg',
+                        status: 'pending',   // 'pending' | 'uploaded'
+                        timestamp: Date.now()
+                    };
+                    const req = store.add(record);
+                    req.onsuccess = (e) => resolve(e.target.result);
+                    req.onerror = (e) => reject(e.target.error);
+                });
+            }
+
+            function updatePhotoStatus(id, status) {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction([STORE_NAME], 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const getReq = store.get(id);
+                    getReq.onsuccess = (e) => {
+                        const record = e.target.result;
+                        if (!record) return resolve();
+                        record.status = status;
+                        const putReq = store.put(record);
+                        putReq.onsuccess = () => resolve();
+                        putReq.onerror = (e) => reject(e.target.error);
+                    };
+                    getReq.onerror = (e) => reject(e.target.error);
+                });
+            }
+
+            function deletePhotoFromDB(id) {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction([STORE_NAME], 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const req = store.delete(id);
+                    req.onsuccess = () => resolve();
+                    req.onerror = (e) => reject(e.target.error);
+                });
+            }
+
+            function loadAllPhotosFromDB() {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction([STORE_NAME], 'readonly');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const req = store.getAll();
+                    req.onsuccess = (e) => resolve(e.target.result);
+                    req.onerror = (e) => reject(e.target.error);
+                });
+            }
+
+            function updateEmptyState() {
+                const hasItems = galleryGrid.querySelectorAll('.gallery-item').length > 0;
+                galleryEmpty.style.display = hasItems ? 'none' : 'flex';
+            }
+
+            function renderPhotoFromDB(record, prepend = false) {
+                const mediaType = record.fileType.startsWith('video/') ? 'video' : 'image';
+                const newItem = document.createElement('div');
+                newItem.className = 'gallery-item' + (mediaType === 'video' ? ' gallery-item-video' : '');
+                newItem.setAttribute('data-src', record.dataURL);
+                newItem.setAttribute('data-type', mediaType);
+                newItem.setAttribute('data-db-id', record.id);
+                newItem.setAttribute('tabindex', '0');
+                newItem.setAttribute('aria-label', mediaType === 'video' ? 'Galerievideo' : 'Galeriebild');
+
+                // Löschen-Button
+                const delBtn = document.createElement('button');
+                delBtn.className = 'gallery-delete-btn';
+                delBtn.setAttribute('aria-label', 'Foto löschen');
+                delBtn.innerHTML = '&#x2715;';
+                delBtn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    await deletePhotoFromDB(record.id);
+                    newItem.remove();
+                    refreshGalleryReferences();
+                    updateEmptyState();
+                });
+                newItem.appendChild(delBtn);
+
+                if (mediaType === 'image') {
+                    const img = document.createElement('img');
+                    img.src = record.dataURL;
+                    img.alt = 'Gespeichertes Hochzeitsfoto';
+                    img.loading = 'lazy';
+                    newItem.appendChild(img);
+                } else {
+                    const video = document.createElement('video');
+                    video.src = record.dataURL;
+                    video.muted = true;
+                    video.loop = true;
+                    video.playsInline = true;
+                    newItem.appendChild(video);
+                }
+
+                // Uploader-Name Badge
+                if (record.guestName) {
+                    const nameTag = document.createElement('div');
+                    nameTag.className = 'uploader-tag';
+                    nameTag.textContent = record.guestName;
+                    newItem.appendChild(nameTag);
+                }
+
+                if (prepend) {
+                    galleryGrid.insertBefore(newItem, galleryGrid.firstChild);
+                } else {
+                    galleryGrid.appendChild(newItem);
+                }
+                attachGalleryItemEvent(newItem);
+                updateEmptyState();
+                return newItem;
+            }
+
+            // ==========================================================================
+            // TAB SYSTEM
+            // ==========================================================================
+            function switchTab(targetTab) {
+                if (targetTab === 'capture') {
+                    tabBtnCapture.classList.add('active');
+                    tabBtnCapture.setAttribute('aria-selected', 'true');
+                    tabBtnGallery.classList.remove('active');
+                    tabBtnGallery.setAttribute('aria-selected', 'false');
+                    panelCapture.classList.add('active');
+                    panelGallery.classList.remove('active');
+                } else {
+                    tabBtnGallery.classList.add('active');
+                    tabBtnGallery.setAttribute('aria-selected', 'true');
+                    tabBtnCapture.classList.remove('active');
+                    tabBtnCapture.setAttribute('aria-selected', 'false');
+                    panelGallery.classList.add('active');
+                    panelCapture.classList.remove('active');
+                    
+                    // Aktualisiere das Referenzarray der Galerieelemente für die Lightbox
+                    refreshGalleryReferences();
+                }
+            }
+
+            tabBtnCapture.addEventListener('click', () => switchTab('capture'));
+            tabBtnGallery.addEventListener('click', () => switchTab('gallery'));
+
+            // ==========================================================================
+            // CAMERA & GALLERY CAPTURE
+            // ==========================================================================
+            btnTriggerCamera.addEventListener('click', () => cameraInput.click());
+            btnTriggerGallery.addEventListener('click', () => galleryInput.click());
+
+            function handleFileSelected(file) {
+                if (!file) return;
+                tempFile = file;
+                const fileURL = URL.createObjectURL(file);
+                previewWrapper.innerHTML = '';
+
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = fileURL;
+                    img.alt = 'Vorschau';
+                    previewWrapper.appendChild(img);
+                    btnSubmitUpload.innerHTML = `
+                        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px;"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                        Foto hochladen
+                    `;
+                } else if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.src = fileURL;
+                    video.controls = true;
+                    video.playsInline = true;
+                    previewWrapper.appendChild(video);
+                    btnSubmitUpload.innerHTML = `
+                        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px;"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                        Video hochladen
+                    `;
+                }
+
+                previewContainer.style.display = 'block';
+                successAlert.style.display = 'none';
+                previewContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            cameraInput.addEventListener('change', (e) => handleFileSelected(e.target.files[0]));
+
+            galleryInput.addEventListener('change', async (e) => {
+                const files = Array.from(e.target.files);
+                if (!files.length) return;
+
+                if (files.length === 1) {
+                    // Einzelne Datei: normaler Vorschau-Flow
+                    handleFileSelected(files[0]);
+                } else {
+                    // Mehrere Dateien: alle direkt hochladen, ohne einzelne Vorschau
+                    resetCaptureState();
+                    previewContainer.style.display = 'block';
+                    previewWrapper.innerHTML = '';
+                    successAlert.style.display = 'none';
+
+                    btnSubmitUpload.disabled = true;
+                    btnSubmitUpload.style.opacity = '0.6';
+                    btnCancelCapture.disabled = true;
+                    btnCancelCapture.style.opacity = '0.5';
+
+                    let done = 0;
+                    const updateProgress = () => {
+                        done++;
+                        btnSubmitUpload.innerHTML = `
+                            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px;animation:rotateDashed 2s linear infinite;"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                            ${done} / ${files.length} hochgeladen...
+                        `;
+                    };
+
+                    // Alle Dateien parallel verarbeiten
+                    await Promise.all(files.map(file => uploadSingleFile(file, updateProgress)));
+
+                    refreshGalleryReferences();
+                    successAlert.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        ${files.length} Fotos gespeichert – Danke! 🎉
+                    `;
+                    successAlert.style.display = 'inline-flex';
+
+                    setTimeout(() => {
+                        switchTab('gallery');
+                        btnSubmitUpload.disabled = false;
+                        btnSubmitUpload.style.opacity = '1';
+                        btnSubmitUpload.innerHTML = `
+                            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px;"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                            Foto hochladen
+                        `;
+                        btnCancelCapture.disabled = false;
+                        btnCancelCapture.style.opacity = '1';
+                        resetCaptureState();
+                    }, 2000);
+                }
+            });
+
+            // Hilfsfunktion: eine Datei lesen, in DB speichern und auf Drive hochladen
+            // Gibt true zurück wenn der Drive-Upload erfolgreich war, sonst false
+            async function uploadSingleFile(file, onDone) {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = async function() {
+                        const dataURL = reader.result;
+                        const guestName = localStorage.getItem('guestName') || 'Gast';
+                        const safeGuestName = guestName.trim().replace(/[^a-zA-Z0-9ÄäÖöÜüß _-]/g, '').replace(/\s+/g, '_');
+                        const now = new Date();
+                        const hh = String(now.getHours()).padStart(2, '0');
+                        const mm = String(now.getMinutes()).padStart(2, '0');
+                        const ss = String(now.getSeconds()).padStart(2, '0');
+                        const ext = (file.type.split('/')[1] || 'jpg').replace('jpeg', 'jpg');
+                        const formattedFileName = `${safeGuestName}_${hh}_${mm}_${ss}.${ext}`;
+
+                        // 1. Lokal speichern (status: pending)
+                        const newId = await savePhotoToDB(dataURL, file.type, guestName, formattedFileName);
+                        renderPhotoFromDB({ id: newId, dataURL, fileType: file.type, guestName, status: 'pending' }, true);
+
+                        // 2. Auf Drive hochladen – WARTEN bis abgeschlossen
+                        try {
+                            await fetch('https://script.google.com/macros/s/AKfycbyY0VYsW97qhLHJ1lh49_Oyv9zw-IPWKExdDOiaJ_j8ab8OYfqJQ0e-nNJRBu5_ieUIIQ/exec', {
+                                method: 'POST',
+                                mode: 'no-cors',
+                                headers: { 'Content-Type': 'text/plain' },
+                                body: JSON.stringify({ fileName: formattedFileName, fileType: file.type, fileData: dataURL.split(',')[1] })
+                            });
+                            // Drive-Upload OK → Status aktualisieren
+                            await updatePhotoStatus(newId, 'uploaded');
+                        } catch (err) {
+                            // Bleibt 'pending' → wird beim nächsten Öffnen automatisch erneut versucht
+                            console.warn('Drive-Upload fehlgeschlagen, wird später wiederholt:', err);
+                        }
+
+                        if (onDone) onDone();
+                        resolve();
+                    };
+                });
+            }
+
+            // Hilfsfunktion: einen bereits gespeicherten DB-Record erneut auf Drive hochladen (Retry)
+            async function retryUploadFromRecord(record) {
+                try {
+                    await fetch('https://script.google.com/macros/s/AKfycbyY0VYsW97qhLHJ1lh49_Oyv9zw-IPWKExdDOiaJ_j8ab8OYfqJQ0e-nNJRBu5_ieUIIQ/exec', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify({
+                            fileName: record.fileName || `retry_${record.id}.jpg`,
+                            fileType: record.fileType,
+                            fileData: record.dataURL.split(',')[1]
+                        })
+                    });
+                    await updatePhotoStatus(record.id, 'uploaded');
+                    console.log(`Retry erfolgreich für ID ${record.id}`);
+                } catch (err) {
+                    console.warn(`Retry fehlgeschlagen für ID ${record.id}:`, err);
+                }
+            }
+
+            // Abbrechen der aktuellen Aufnahme
+            btnCancelCapture.addEventListener('click', () => resetCaptureState());
+
+            function resetCaptureState() {
+                cameraInput.value = '';
+                galleryInput.value = '';
+                tempFile = null;
+                previewContainer.style.display = 'none';
+                previewWrapper.innerHTML = '';
+                successAlert.style.display = 'none';
+            }
+
+            // ==========================================================================
+            // UPLOAD LOGIC (Einzeldatei – nach Vorschau)
+            // ==========================================================================
+            btnSubmitUpload.addEventListener('click', async () => {
+                if (!tempFile) return;
+
+                btnSubmitUpload.disabled = true;
+                btnSubmitUpload.style.opacity = '0.6';
+                btnSubmitUpload.innerHTML = `
+                    <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px;animation:rotateDashed 2s linear infinite;"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                    Wird hochgeladen...
+                `;
+                btnCancelCapture.disabled = true;
+                btnCancelCapture.style.opacity = '0.5';
+
+                await uploadSingleFile(tempFile);
+                refreshGalleryReferences();
+
+                successAlert.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    Danke – dein Moment wurde gespeichert! 🎉
+                `;
+                successAlert.style.display = 'inline-flex';
+
+                setTimeout(() => {
+                    switchTab('gallery');
+                    btnSubmitUpload.disabled = false;
+                    btnSubmitUpload.style.opacity = '1';
+                    btnSubmitUpload.innerHTML = `
+                        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;margin-right:8px;"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+                        Foto hochladen
+                    `;
+                    btnCancelCapture.disabled = false;
+                    btnCancelCapture.style.opacity = '1';
+                    resetCaptureState();
+                }, 2000);
+            });
+
+            // ==========================================================================
+            // LIGHTBOX SYSTEM & NAVIGATION
+            // ==========================================================================
+            
+            function refreshGalleryReferences() {
+                // Liest alle aktuell im DOM vorhandenen Galerie-Karten ein
+                currentGalleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+            }
+
+            function openLightbox(index) {
+                activeLightboxIndex = index;
+                const item = currentGalleryItems[activeLightboxIndex];
+                if (!item) return;
+
+                const mediaSrc = item.getAttribute('data-src');
+                const mediaType = item.getAttribute('data-type');
+                
+                // Container leeren
+                lightboxMediaContainer.innerHTML = '';
+
+                if (mediaType === 'image') {
+                    const img = document.createElement('img');
+                    img.src = mediaSrc;
+                    img.className = 'lightbox-media';
+                    img.alt = 'Vergrößerte Galerieansicht';
+                    lightboxMediaContainer.appendChild(img);
+                } else if (mediaType === 'video') {
+                    const video = document.createElement('video');
+                    video.src = mediaSrc;
+                    video.className = 'lightbox-media';
+                    video.controls = true;
+                    video.autoplay = true;
+                    video.playsInline = true;
+                    lightboxMediaContainer.appendChild(video);
+                }
+
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Scrollen des Hintergrunds verhindern
+                
+                // Fokus auf Schließen-Button setzen für Barrierefreiheit
+                lightboxClose.focus();
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                lightboxMediaContainer.innerHTML = '';
+                document.body.style.overflow = ''; // Scrollen wieder aktivieren
+            }
+
+            function navigateLightbox(direction) {
+                let newIndex = activeLightboxIndex + direction;
+                
+                // Endlos-Schleife (Looping) durch die Galerie
+                if (newIndex >= currentGalleryItems.length) {
+                    newIndex = 0;
+                } else if (newIndex < 0) {
+                    newIndex = currentGalleryItems.length - 1;
+                }
+                
+                openLightbox(newIndex);
+            }
+
+            // Event-Listener an ein einzelnes Galerie-Item hängen
+            function attachGalleryItemEvent(item) {
+                const triggerAction = () => {
+                    refreshGalleryReferences();
+                    const index = currentGalleryItems.indexOf(item);
+                    if (index !== -1) {
+                        openLightbox(index);
+                    }
+                };
+
+                item.addEventListener('click', triggerAction);
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        triggerAction();
+                    }
+                });
+            }
+
+            // Initiale Registrierung + Fotos aus IndexedDB laden + pending-Uploads wiederholen
+            openDB().then(database => {
+                db = database;
+                return loadAllPhotosFromDB();
+            }).then(records => {
+                // Älteste zuerst anzeigen
+                records.sort((a, b) => a.timestamp - b.timestamp);
+                records.forEach(record => renderPhotoFromDB(record, false));
+                refreshGalleryReferences();
+                updateEmptyState();
+
+                // Pending-Uploads im Hintergrund wiederholen (Option 2)
+                const pending = records.filter(r => r.status === 'pending');
+                if (pending.length > 0) {
+                    console.log(`${pending.length} ausstehende Upload(s) werden wiederholt...`);
+                    // Kurz warten, damit die Seite erst fertig lädt
+                    setTimeout(() => {
+                        pending.forEach(record => retryUploadFromRecord(record));
+                    }, 3000);
+                }
+            }).catch(err => {
+                console.warn('IndexedDB nicht verfügbar:', err);
+                updateEmptyState();
+            });
+
+            // Lightbox Kontrollen
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+            lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+            // Schließen bei Klick außerhalb des Medieninhalts
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrapper')) {
+                    closeLightbox();
+                }
+            });
+
+            // Tastatur-Navigation (Esc = Schließen, Pfeil links/rechts = Blättern)
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                }
+            });
+
+            // Touch-Gesten für mobile Lightbox-Navigation (Swipe left/right)
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            lightbox.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            lightbox.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipeGesture();
+            }, { passive: true });
+
+            function handleSwipeGesture() {
+                const swipeThreshold = 50; // Mindestdistanz in Pixeln
+                const diff = touchEndX - touchStartX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe nach rechts -> Vorheriges Bild
+                        navigateLightbox(-1);
+                    } else {
+                        // Swipe nach links -> Nächstes Bild
+                        navigateLightbox(1);
+                    }
+                }
+            }
+
+            // ==========================================================================
+            // GUEST NAME QUERY MODAL LOGIC (Milestone 2 & Milestone 3)
+            // ==========================================================================
+            function updateSubmitButtonState() {
+                const trimmedValue = guestNameInput.value.trim();
+                if (trimmedValue === '') {
+                    btnSubmitName.disabled = true;
+                    btnSubmitName.style.opacity = '0.5';
+                } else {
+                    btnSubmitName.disabled = false;
+                    btnSubmitName.style.opacity = '1';
+                }
+            }
+
+            function closeNameModal() {
+                nameOverlayModal.classList.remove('active');
+                document.body.style.overflow = '';
+                btnCancelEditName.style.display = 'none';
+                guestNameInput.classList.remove('invalid');
+                guestNameError.classList.remove('active');
+            }
+
+            function checkGuestName() {
+                const name = localStorage.getItem('guestName');
+                if (!name || name.trim() === '') {
+                    nameOverlayModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    guestNameInput.value = '';
+                    guestNameInput.focus();
+                    updateSubmitButtonState();
+                    if (guestProfile) guestProfile.style.display = 'none';
+                    btnCancelEditName.style.display = 'none';
+                } else {
+                    nameOverlayModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    if (guestNameDisplay) guestNameDisplay.textContent = name;
+                    if (guestProfile) guestProfile.style.display = 'flex';
+                    btnCancelEditName.style.display = 'none';
+                }
+            }
+
+            // Submit handler for name overlay
+            nameForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const trimmedValue = guestNameInput.value.trim();
+                if (trimmedValue === '') {
+                    guestNameInput.classList.add('invalid');
+                    guestNameError.classList.add('active');
+                    guestNameInput.focus();
+                    updateSubmitButtonState();
+                } else {
+                    try {
+                        localStorage.setItem('guestName', trimmedValue);
+                    } catch (err) {
+                        console.error('Failed to save to localStorage:', err);
+                    }
+                    closeNameModal();
+                    if (guestNameDisplay) guestNameDisplay.textContent = trimmedValue;
+                    if (guestProfile) guestProfile.style.display = 'flex';
+                }
+            });
+
+            // Input listener to clear validation styles
+            guestNameInput.addEventListener('input', () => {
+                guestNameInput.classList.remove('invalid');
+                guestNameError.classList.remove('active');
+                updateSubmitButtonState();
+            });
+
+            // Edit button click
+            if (btnEditName) {
+                btnEditName.addEventListener('click', () => {
+                    const name = localStorage.getItem('guestName') || '';
+                    guestNameInput.value = name;
+                    nameOverlayModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    guestNameInput.focus();
+                    updateSubmitButtonState();
+                    btnCancelEditName.style.display = 'block';
+                });
+            }
+
+            // Cancel button click
+            if (btnCancelEditName) {
+                btnCancelEditName.addEventListener('click', () => {
+                    const name = localStorage.getItem('guestName');
+                    if (name && name.trim() !== '') {
+                        closeNameModal();
+                    }
+                });
+            }
+
+            // Click outside name overlay to close (only if guestName is already set)
+            nameOverlayModal.addEventListener('click', (e) => {
+                if (e.target === nameOverlayModal) {
+                    const name = localStorage.getItem('guestName');
+                    if (name && name.trim() !== '') {
+                        closeNameModal();
+                    }
+                }
+            });
+
+            // Intercept keydown to trap focus and conditionally block escape key
+            nameOverlayModal.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const name = localStorage.getItem('guestName');
+                    if (name && name.trim() !== '') {
+                        closeNameModal();
+                        e.preventDefault();
+                        e.stopPropagation();
+                    } else {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }
+
+                if (e.key === 'Tab') {
+                    const focusableElements = [guestNameInput, btnSubmitName];
+                    if (btnCancelEditName.style.display !== 'none') {
+                        focusableElements.push(btnCancelEditName);
+                    }
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            lastElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+
+            // Listen globally to focusin on the document when modal is active to prevent focus bypass
+            document.addEventListener('focusin', (e) => {
+                if (nameOverlayModal.classList.contains('active') && !nameOverlayModal.contains(e.target)) {
+                    guestNameInput.focus();
+                }
+            });
+
+            // Listen to storage events directly (reflect storage updates instantly)
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'guestName') {
+                    checkGuestName();
+                }
+            });
+
+            // Run name query check on entry
+            checkGuestName();
+        });
+    </script>
+</body>
+</html>
